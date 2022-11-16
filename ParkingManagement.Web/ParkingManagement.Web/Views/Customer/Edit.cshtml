@@ -1,0 +1,82 @@
+﻿@model CustomerViewModel
+
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="cstm-title">
+                 <i class="fa-solid fa-user"></i>
+                 <span>EDIT CUSTOMER</span>
+            </div>
+        </div>
+    </div>
+
+    <form asp-action="Save" method="post">
+        <input asp-for="inputCustomer.InternalId" type="hidden"/>
+        <div class="cstm-divider-title">
+            <span>PERSONAL INFORMATION</span>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 mb-3 form-group">
+                <input asp-for="inputCustomer.CustomerId" type="text" class="form-control" placeholder="Customer Id" readonly/>
+            </div>
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.FirstName" class="form-label">* First Name:</label>
+                <input asp-for="inputCustomer.FirstName" type="text" class="form-control" placeholder="First Name" />
+                <span asp-validation-for="inputCustomer.FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.MiddleName" class="form-label">Middle Name:</label>
+                <input asp-for="inputCustomer.MiddleName" type="text" class="form-control" placeholder="Middle Name" />
+                <span asp-validation-for="inputCustomer.MiddleName" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.LastName" class="form-label">* Last Name:</label>
+                <input asp-for="inputCustomer.LastName" type="text" class="form-control" placeholder="Last Name" />
+                <span asp-validation-for="inputCustomer.LastName" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.BirthDate" class="form-label">* Birthdate:</label>
+                <input asp-for="inputCustomer.BirthDate" type="date" class="form-control" placeholder="Birthdate" />
+                <span asp-validation-for="inputCustomer.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.Gender" class="form-label">* Gender:</label>
+                <select asp-for="inputCustomer.Gender" class="form-select"
+                        asp-items="@(new SelectList(Model.Genders))">
+                </select>
+                <span asp-validation-for="inputCustomer.Gender" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="cstm-divider-title">
+            <span>CONTACT INFORMATION</span>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.ContactNo" class="form-label">* Contact No.:</label>
+                <input asp-for="inputCustomer.ContactNo" type="text" class="form-control" placeholder="Contact No." />
+                <span asp-validation-for="inputCustomer.ContactNo" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.EmailAddress" class="form-label">Email Address:</label>
+                <input asp-for="inputCustomer.EmailAddress" type="email" class="form-control" placeholder="Email Address" />
+                <span asp-validation-for="inputCustomer.EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-4 mb-3 form-group">
+                <label asp-for="inputCustomer.Address" class="form-label">Address:</label>
+                <input asp-for="inputCustomer.Address" type="text" class="form-control" placeholder="Address" />
+                <span asp-validation-for="inputCustomer.Address" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-12">
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save</button>
+                <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i>&nbsp;Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

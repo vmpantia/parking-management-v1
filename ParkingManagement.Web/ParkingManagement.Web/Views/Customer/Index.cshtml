@@ -1,0 +1,52 @@
+﻿@model CustomersViewModel
+
+@{
+    ViewData["Title"] = "Customers";
+}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="cstm-title">
+                 <i class="fa-solid fa-users"></i>
+                 <span>CUSTOMER LIST</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <a class="btn btn-primary btn-sm" asp-action="Create"><i class="fa-solid fa-user-plus"></i>&nbsp;Create</a> 
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <table class="table table-striped table-hover" >
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>CustomerId</th>
+                        <th>Name</th>
+                        <th>Contact No.</th>
+                        <th>Email Address</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var customer in Model.Customers)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@customer.InternalId" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i>&nbsp;Edit</a>
+                                <a asp-action="Delete" asp-route-id="@customer.InternalId" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-xmark"></i>&nbsp;Delete</a>
+                            </td>
+                            <td>@customer.CustomerId</td>
+                            <td>@string.Concat(customer.FirstName, " ", customer.LastName)</td>
+                            <td>@customer.ContactNo</td>
+                            <td>@customer.EmailAddress</td>
+                            <td>@customer.Address</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
